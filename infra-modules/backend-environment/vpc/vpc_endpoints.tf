@@ -22,7 +22,7 @@ resource "aws_vpc_endpoint" "cloudwatch" {
   service_name = "com.amazonaws.${var.region}.logs"
   vpc_endpoint_type = "Interface"
   subnet_ids          = aws_subnet.private_subnet.*.id
-
+  private_dns_enabled = true
   security_group_ids = [
     "${aws_security_group.ecs_tasks.id}",
   ]
