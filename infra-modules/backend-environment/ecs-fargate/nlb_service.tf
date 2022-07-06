@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "nlb_tg" {
   depends_on  = [
     aws_lb.nlb
   ]
-  name        = "nlb-syn-ecomm-${var.environment}-tg"
+  name        = "nlb-ecs-${var.environment}-tg"
   port        = var.app_port
   protocol    = "TCP"
   vpc_id      = var.vpc_id

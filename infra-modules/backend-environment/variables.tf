@@ -43,7 +43,7 @@ variable "app_count" {
   description = "The number of instances of the task definition to place and keep running."
 }
 
-variable "main_pvt_route_table_id" {
+/* variable "main_pvt_route_table_id" {
   type        = string
   description = "Main route table id"
-}
+} */

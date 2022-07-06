@@ -24,7 +24,7 @@ resource "aws_subnet" "private_subnet" {
 
 ### Security Group Setup
 
-# ALB Security group
+# ALB Security group (If you want to use ALB instead of NLB. NLB doesn't use Security Groups)
 resource "aws_security_group" "lb" {
   name        = "${var.security_group_lb_name}-${var.environment}"
   description = var.security_group_lb_description
@@ -88,4 +88,11 @@ resource "aws_security_group" "ecs_tasks" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+# Route table and subnet associations
+resource "aws_route_table_association" "subnet_route_assoc" {
+  count = var.number_of_private_subnets
+  subnet_id      = aws_subnet.private_subnet[count.index].id
+  route_table_id = aws_vpc.custom_vpc.default_route_table_id
 }

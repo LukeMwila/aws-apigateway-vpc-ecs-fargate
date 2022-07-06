@@ -1,6 +1,6 @@
 inputs = {
   environment    = "dev"
-  app_count = 1
+  app_count = 3
 }
 
 include {
